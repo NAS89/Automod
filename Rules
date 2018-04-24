@@ -1,0 +1,273 @@
+#These filters were created, modified, maintained, and butchered by /u/NAS89 at times much later than a production change should be enacted.
+#Current revision date is 21-April-2018.
+#Current production release is 1.2.2
+#Current test release (www.reddit.com/r/Panthersmod) is 1.2.8
+
+#For full Automoderator functionality and features, please review the documentation here: https://www.reddit.com/wiki/automoderator/full-documentation
+
+
+#Automoderator Action 1
+#Code removed on 02-FEB-2018 by /u/NAS89 to remove the "megathread" requests for the popular items below and rever to silent removal.
+#See Automoderator Action 2
+#---
+#type: submission
+#title: ["protest","Richardson","anthem", "Trump", "Shula"]
+#action: remove
+#action_reason: 'Megathread'
+#Modmail: |
+#    Your post has been removed for violating subreddit rules related to reposts. Please review our rules here https://www.reddit.com/r/panthers/wiki/rules
+#
+#    If you feel this has been removed in error, please feel free to message the moderators with a link to your post at https://www.reddit.com/message/compose?to=/r/panthers
+
+
+
+#Automoderator Action 2
+#Code activated on 02-FEB-2018 by /u/NAS89. Triggering words (hehe, "triggering") will result in a silent removal of the post. No notification will be provided to user.
+#See Automoderator Action 2
+---
+type: submission
+title: ["protest","anthem", "Trump", "communist", "President","liberal","nigger","fake","cuck"]
+action: remove
+#By removing the "action_reason" and modmail, the above title triggers will be removed without notificaiton to the mod. The only way a Moderator can check this is by viewing the modlog and sorting by actions from Automoderator. As we've #decided from our conversations on the Slack group, we are not intersted in reviewing this at this time and will keep these as silent removals. Expand on this by adding new items between the brackets.
+
+
+#Automoderator Action 3
+#Added 06/12/2016 by /u/NAS89 to stop the brigading from the NFL Survivor Poll.
+---
+type: submission
+title: ["survivor","/r/nfl","vote"]
+action: remove
+action_reason: 'Repost'
+Modmail: |
+    Your post seems to be regarding the recent protests of NFL players during the National Anthem. All articles or comments related     to these items should be posted in the megathread located here:                                            https://www.reddit.com/r/panthers/comments/72p6bl/national_anthem_personal_protests_state_of_the/
+    If you feel this has been removed in error, please feel free to message the moderators with a link to your post at     https://www.reddit.com/message/compose?to=/r/panthers
+
+
+#Automoderator Action 4
+#Added by /u/NAS89 May 2, 2017. Automoderator could be gamed by reporting it's comments enough to auto-remove them by further rules. This functionality prevents that.
+#This filter is created to automatically approve posts by Automoderator. It is intended to prevent trolling and spam abuse reports from users from removing any important automoderator functions or notations.
+---
+author:
+    name:"Automoderator"
+action: approve
+action_reason: Approve Automoderator Post
+
+
+#Automoderator Action 5
+#This filter removes comments or submissions from Zero Day accounts. Note: This is not a moderator exempt filter. Zero Day moderators will be affected.
+#Special Note after /r/t_d brigading: Upped age requirment from 1 to 3 days, temporarily disabled modmail notification. 
+---
+type: any
+author:
+    account_age: '< 3 days'
+action: remove
+Modmail: The above {{kind}} by /u/{{author}} has been removed because /u/{{author}} does not meet the required minimum account age. Please review this post as it may be a false indicator of spam and may just be a new user attempting to comment on /r/Panthers.
+moderators_exempt: false
+
+
+#Automoderator Action 6
+#This filter removes comments or submissions from negative karma accounts. Note: This is not a moderator exempt filter. Negative karma moderators will be affected.
+#Special Note after /r/t_d brigading: Lowered Karma limit from -5 to -50. Temporarily disabled modmail notification. 
+---
+type: any
+author:
+    comment_karma: '< -50'
+action: remove
+modmail: The above {{kind}} by /u/{{author}} has been removed because /u/{{author}} does not meet the required minimum karma score. Please review this post as it may be a false indicator of a troll.
+moderators_exempt: false
+
+
+
+
+#Automoderator Action 7
+#Added 01 FEB 2019 by /u/NAS89 to remove Richard Sherman spam. Dunno why we're getting hit with it, don't care.
+---
+type: submission
+title: ["Sherman", "49ers", "Richard"]
+action: remove
+action_reason: 'No Posts unrelated to the Carolina Panthers'
+Modmail: |
+    Your post has been removed for violating subreddit rules related to submission Types. Please review our rules here https://www.reddit.com/r/panthers/wiki/rules
+
+    If you feel this has been removed in error, please feel free to message the moderators with a link to your post at https://www.reddit.com/message/compose?to=/r/panthers
+
+
+
+#Automoderator Action 8
+#Running list of the common spam post messages that violate the profanity filter for thread titles. Mainly just Cam Newton circlejerking by cousin fuckers who can't get past a football game not being
+#the end of the world.
+---
+type: submission
+title: ["fuck", "shit", "damn", "bitch", "cunt", "faggot", "queer", "scam newton", "nigger", "ass"]
+action: remove
+action_reason: 'No "F#%& the _____" Threads or Profanity in Titles'
+Modmail: |
+    Your post has been removed for violating subreddit rules related to submission titles. Please review our rules here https://www.reddit.com/r/panthers/wiki/rules
+
+    If you feel this has been removed in error, please feel free to message the moderators with a link to your post at https://www.reddit.com/message/compose?to=/r/panthers
+
+
+
+
+#Automoderator Action 9
+#Added in June 2017, some idiots have decided to create a second sub to try to "migrate" users away /r/Panthers because they can't stop being toxic. Just remove the references. 
+---
+type: any
+body: ["/r/blackhairedfelines"]
+action: remove
+
+#Automoderator Action 10
+#Banned words list for hate speech.
+---
+type: any
+body: ["faggot", "queer", "nigger", "scam newton"]
+modmail: A {{kind}} by /u/{{author}} has been removed for racial or sexual slurs. Please investigate this and, upon confirmation that this is not a false positive, issue the subreddit specified rules on banning.
+
+
+#Automoderator Action 11
+#This filter performs a threshold check on user reports to attempt to gain moderator attention to possible harassment. If a post receives three reports, it will send a modmail to the subreddit to inform them of the possible harassement. This modmail will not be maid available to the user.
+---
+reports: 3
+modmail: The above {{kind}} by /u/{{author}} has received 3 reports. Please investigate this to ensure that this does not require moderator intervention.
+
+
+#Automoderator Action 12
+#Note: This automatically removes the offending post
+#This filter performs a threshold check on user reports to attempt to gain moderator attention to possible harassment. If a post receives five reports, Automoderator will remove the post. Additionally, it will send a modmail to the subreddit to inform them of the possible harassement. This modmail will not be maid available to the user.
+---
+reports: 5
+action: remove
+modmail: The above {{kind}} by /u/{{author}} has recieved 5 reports and has been automatically removed, with the assumption that it is a troll or harassing comment. Please investigate this to ensure the proper action has been taken.
+
+
+
+#Automoderator Action 13
+#This filter handles subreddit bans from /r/Panthers. Throughout the season, scammers will create fake streaming subreddits and attempt to spam them to /r/Panthers. Upon determining a subreddit to be a spam subreddit, please add it to the list of subreddits to ban linking to.
+---
+url+body: ["r/nflstreamsnow","r/the_donald","r/politics","r/trees"]
+action: remove
+modmail:  The above {{kind}} by /u/{{author}} has triggered the automated subreddit filter and has been removed. It is most likely that this user is a scammer. It is recommended that a moderator inspect this post and the user and provide the appropriate ban protocol for a spammer.
+
+#Automoderator Action 14
+#This filter enforces the subreddit rule against "Fan Here" type posts. Within the brackets for the (includes) filter, common phrases from "visiting fans" can be added to expand upon this list. 
+---   
+Title (includes): ["fan here","come in peace","coming in peace","Patriots fan", "Eagles fan","Steelers fan","Vikings fan","Rams fan","Saints fan","Jaguars fan","Chiefs fan","Falcons fan","Titans fan","Bills fan","Lions fan","Ravens fan","Chargers fan","Seahawks fan","Cowboys fan","Cardinals fan","Bengals fan","Packers fan","Redskins fan","Raiders fan","Dolphins fan","49ers fan","Broncos fan","Jets fan","Buccaneers fan","Bear fan","Colts fan","Texans fan","Giants fan","Browns fan"]
+action: remove
+action_reason: 'Rule 2: No ______ "Fan Here" posts'
+Modmail: |
+    Your post has been removed for violating Rule 2 No _______ "Fan Here" posts allowed. Please review our rules here https://www.reddit.com/r/panthers/wiki/rules
+
+    If you feel this has been removed in error, please feel free to message the moderators with a link to your post at https://www.reddit.com/message/compose?to=/r/panthers
+
+
+
+#Automoderator Action 15
+#This filter enforces the subreddit rule against "Fan Here" type posts. Within the brackets for the (includes) filter, common phrases from "visiting fans" can be added to expand upon this list. 
+---   
+Title (includes): ["fan here","come in peace","coming in peace","Patriots fan", "Eagles fan","Steelers fan","Vikings fan","Rams fan","Saints fan","Jaguars fan","Chiefs fan","Falcons fan","Titans fan","Bills fan","Lions fan","Ravens fan","Chargers fan","Seahawks fan","Cowboys fan","Cardinals fan","Bengals fan","Packers fan","Redskins fan","Raiders fan","Dolphins fan","49ers fan","Broncos fan","Jets fan","Buccaneers fan","Bear fan","Colts fan","Texans fan","Giants fan","Browns fan"]
+action: remove
+action_reason: 'Rule 2: No ______ "Fan Here" posts'
+Modmail: |
+    Your post has been removed for violating Rule 2 No _______ "Fan Here" posts allowed. Please review our rules here https://www.reddit.com/r/panthers/wiki/rules
+
+    If you feel this has been removed in error, please feel free to message the moderators with a link to your post at https://www.reddit.com/message/compose?to=/r/panthers
+
+
+#Automoderator Action 16
+#This filter handles the domain banlist for /r/Panthers. Sites that are using /r/Panthers for self-promotion or brigading can be added to this filter by placing a comma after the last item on the list, a space, and then entering the domain name. It is not necessary to add the http://www. prefix as Automoderator handles this automatically. This will send a modmail to inform the moderators of the removal but, as of 19-March-2017, will no longer inform the poster that their post has been removed. This will prevent attempts to circumevent the ban by falsely displaying the post to the creator as still existing.
+---
+domain: [lastwordonprofootball.com]
+action: remove
+Modmail: The above {{kind}} by /u/{{author}} has been removed for violating  the subreddit rule against self-promotion. The domain submitted exists in the Automoderator configuration as a predetermined spam or self-promotion website. If this is not a false-positive, please ensure that the subreddit rules on user punishment is followed. The best way to achieve this task is to check the user for a note from a previous moderator (using the Toolbox add-on) to determine if a prior punishment has been used. If no previous punishment exists, please provide the first punishment requested (a warning) and note this in Toolbox. If a punishment does exist, escalate that to the 3/5/Permanent ban protocol as described in the subreddit rules.
+
+
+#Automoderator Action 17
+#I'm a salty little bitch is why.
+---
+Title (includes): ["Gettleman","Dave", "Gman", "Gettlemagic"]
+action: remove
+action_reason: 'Rule 14: No Posts Regarding Non-Panthers Players or Personel'
+Modmail: |
+    Your post has been removed for violating Rule 2 No Off-Topic or X Fan Here posts allowed. Please review our rules here https://www.reddit.com/r/panthers/wiki/rules
+
+    If you feel this has been removed in error, please feel free to message the moderators with a link to your post at https://www.reddit.com/message/compose?to=/r/panthers
+
+
+
+#Automoderator Action 18 and 19 reserved.
+
+
+
+#Automoderator Action 20
+#The following filter was created to automatically post in user created threads a reminder about the new flair system. This filter should be removed no later than 22-March-2017.
+#---
+#type: submission
+#moderators_exempt: false
+#Comment: |
+#   /r/Panthers is implementing a flair based system for filtering posts to allow users a more custom way to view the subreddit. To ensure this system works as intended, users are required to flair their posts based on the type of content. The current flairs implemented are "Discussion", "Team News", "Analysis", "Humor", and "Suspect Sources". Please be sure to flair your post accordingly! To do so, open the post you created, click the button that reads "Click to Flair" (if CSS is enabled) or "Flair" (if CSS is disabled) and select the appropriate flair from the dropdown list. This automated message is temporary and will be disabled once user tagged flair is more frequently used. Please note that this bot will approve it's own posts.
+       
+#    Thanks, and Keep Pounding!
+
+
+
+
+
+#Begin Creation and Relationship Table for Post Flairs.
+
+
+
+
+#The following filters are created to enable "Title Tag" based flairing. Automoderator will check each submission and, if the correct phrase is used in the title, Automoderator will set the flair for the users. This feature is not widely used at this point and may undergo changes in the future. Please refer to the sidebar for the most up-to-date filters and check the CSS codes to ensure the correct style is applied.
+
+#This filter sets the Discussion Flair based on proper Title Tag.
+---
+type: submission
+title: "[Discussion]"
+set_flair: ["Discussion", "discussionflair"]
+
+#This filter sets the Team News Flair based on proper Title Tag.
+---
+type: submission
+title: "[Team News]"
+set_flair: ["Team News", "teamnewsflair"]
+
+#This filter sets the Humor Flair based on proper Title Tag.
+---
+type: submission
+title: "[Humor]"
+set_flair: ["Humor", "humorflair"]
+
+#This filter sets the Suspect Sources Flair based on proper Title Tag.
+---
+type: submission
+title: "[Suspect Sources]"
+set_flair: ["Suspect Sources", "suspectsourcesflair"]
+
+#This filter sets the Analysis Flair based on proper Title Tag.
+---
+type: submission
+title: "[Analysis]"
+set_flair: ["Analysis", "analysisflair"]
+
+#This filter sets the Mod Post Flair based on proper Title Tag.
+---
+type: submission
+title: "[Mod Post]"
+set_flair: ["Mod Post", "modpostflair"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
